@@ -8,6 +8,7 @@ exports.login = async (req, res) => {
         if(user) {
             let clave = inforUser.contraseña
             if(user.password == contraseña){
+                
                 res.status(200).send({msj:"Ingreso correcto"})
             } else{
                 res.status(400).send({msj:"Información invalida"})
