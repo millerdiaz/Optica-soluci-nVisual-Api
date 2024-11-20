@@ -27,12 +27,25 @@ const productModel = mongoose.Schema({
     disponibilidad:{
         type:Boolean,
         required : true
-    }
+    },
+    descuento: {
+        type: Number,
+        default: 0
+    },
+    email: {
+        type: String,
+        required :true
+    },
+    password: {
+        type: String,
+        required:true
+    }    
 },
 {
+timestamps: true,
 versionKey:false
 });
-
+ 
 module.exports = mongoose.model('producto',productModel);
 /*
 {
@@ -41,7 +54,9 @@ module.exports = mongoose.model('producto',productModel);
     "img": ""
     "precio": 350000,
     "genero" : "Masculino",
-    "descripcion": "Gafas de sol"
-    "disponibilidad":true
+    "descripcion": "Gafas de sol",
+    "disponibilidad":true,
+    "email": gola@hotmail.com,
+    "password":"clave123"
 }
     */
