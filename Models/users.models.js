@@ -9,27 +9,32 @@ const userModel = mongoose.Schema({
         type: String,
         required: true
     },
+    direccion: {
+        type: String,
+        required: true
+    },
     correo: {
         type: String,
         required: true
     },
-    contraseña: {
+    contrasena: {
         type: String,
         required: true
     }
 },{
-    versionKey: false
+    versionKey: `true`
 }
 )
 
 
-module.exports = mongoose.model('usuarios', productsModel)
+module.exports = mongoose.model('users', userModel)
 
 /*
 {
 "nombre":"jose",
 "apellidos": "Quinto Aguilar",
 "correo": "jose@gmail.com",
-"contraseña": "1234jose"
+"contrasena": "1234jose"
+"direccion": "calle 100 # 9 - 90"
 }
 */
