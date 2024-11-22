@@ -20,6 +20,10 @@ const userModel = mongoose.Schema({
     contrasena: {
         type: String,
         required: true
+    },
+    roll: {
+        type: String,
+        required: true
     }
 },{
     versionKey: `true`
@@ -34,7 +38,8 @@ module.exports = mongoose.model('users', userModel)
 "nombre":"jose",
 "apellidos": "Quinto Aguilar",
 "correo": "jose@gmail.com",
-"contrasena": "1234jose"
-"direccion": "calle 100 # 9 - 90"
+"contrasena": "1234jose",
+"direccion": "calle 100 # 9 - 90",
+"roll": "administrador"
 }
 */

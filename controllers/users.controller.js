@@ -26,6 +26,20 @@ exports.getOneUser = async (req, res)=> {
     } catch (error) {
         
     }
+
+//     try {
+//         let id = req.params.id
+//         if (id.length == 24) {
+//             let product = await productmodels.findOne({_id: id})
+//             if (product) {
+//                 res.json(product)
+//             } else {
+//                 res.send({error: "No se encuentra ningun producto"})
+//             }
+//         } else {
+//             res.send({error: "Id incorrecto"})
+//         }
+// }
 }
 exports.addUsers = async(req, res)=> {
     try {
@@ -50,47 +64,47 @@ exports.addUsers = async(req, res)=> {
 exports.deleteUser = async(req, res)=> {
     try {
         let id = req.params.id
-        let borrado = await userModel.findOneAndDelete({_ID : id})
-        res.status (200).json(borrado)
-        // if (product) {
-        //     let deleteUser = await userModel.findOneAndDelete({_id: id})
-        //     res.json(deleteUser)
+        if (id.length == 24) {
+            let user = await userModel.findById(id)
+            if (user) {
+                let deleteUser = await userModel.findOneAndDelete({_id: id})
+                res.json(deleteUser)
 
-        // } else {
-        //     res.send({error:"El usuario que intentas eliminarno se encuentra en la base de datos"})
+            } else {
+                res.send({error:"El usuario que intentas eliminar no se encuentra en la base de datos"})
+            }
 
-        // } 
+        } else {
+            res.send({error:"ID incorrecto"})
+        }
+       
         
     } catch (error) {
         console.log(error);
-        res.send({error:"ID incorrecto"})
+        res.send({error:"Error"})
         
     }
 }
-exports.updateUser = async(req, res)=> {
+exports.updateUser = async (req, res) => {
     try {
-        let id = req.params.idt
-        let data = req.body
+        let id = req.params.id;
+        let data = req.body;
 
-        let user = await userModel.findById(id)
+        let user = await userModel.findById(id);
 
-        Object.assign(user, data)
+        if (!user) {
+            return res.status(404).json({ error: "Usuario no encontrado" });
+        }
 
-        let actualizado = await userModel.findOneAndUpdate({_id: id}, user)
-        res.status(200).json(actualizado)
+        Object.assign(user, data);
 
+        let updatedUser = await user.save();
 
-        // if (user){
-        //     Object.assign(user, update)
-        //     let updateUser = await userModel.updateOne({_id: id}, user)
-        //     res.json(updateUser)
-        // }else {
-        //     res.send({error: "No fue posible actuaizar la informaión del usuario"})
-        // }
+        res.status(200).json(updatedUser);
+
     } catch (error) {
         console.log(error);
-        res.send({error:"ha ocurrido un error"})
-        
+        res.status(500).json({ error: "Ha ocurrido un error al intentar actualizar la información del usuario" });
     }
 }
 exports.inicioDeSesion = async (req, res)=> {
