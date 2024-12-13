@@ -26,7 +26,7 @@ const userModel = mongoose.Schema({
         required: true
     }
 },{
-    versionKey: `true`
+    versionKey: false
 }
 )
 

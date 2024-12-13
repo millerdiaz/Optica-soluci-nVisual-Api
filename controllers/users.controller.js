@@ -19,12 +19,12 @@ exports.getOneUser = async (req, res)=> {
         const id = req.params.id
         let user = await userModel.findOne({_id: id})
         if (user) {
-            res.json(user)
+            res.status(200).json(user)
         } else {
-            res.send({error: "Usuario no registrado"})
+            res.status(400).send({error: "Usuario no registrado"})
         }
     } catch (error) {
-        
+        res.status(404).send({error:"No fue posible atender la solicitud, porfavor confirma la información introducida"})
     }
 
 //     try {
@@ -47,18 +47,11 @@ exports.addUsers = async(req, res)=> {
         let nuevoUsuario = new userModel(data)
         let creado = await nuevoUsuario.save()
         res.status(200).json(creado)
-        // if (!buscarusuario) {
-        //     let nuevoUsuario = new userModel(user)
-        //     await newUser.save()
-        //     res,json(newUser)
-        // }else {
-        //     res.send ({error: "El usuario ya existe"})
-        // }
+       
     } catch (error) {
         console.log(error);
-        res.send({error:"Necesitas ayuda? contactanos"})
-        
-        
+        res.status(400).send({error:"Necesitas ayuda? contactanos"})
+                
     }
 }
 exports.deleteUser = async(req, res)=> {
@@ -112,7 +105,7 @@ exports.inicioDeSesion = async (req, res)=> {
         let data = req.body
         let user = await userModel.FindOne({email: data.email})
 
-        if (user) {(user.password === data.password); {
+        if (user) {(user.contrasena === data.contrasena); {
             let payload = {
                 id: user._id,
                 roll: user.roll,
