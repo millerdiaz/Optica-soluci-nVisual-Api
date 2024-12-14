@@ -31,15 +31,16 @@ const productModel = mongoose.Schema({
     descuento: {
         type: Number,
         default: 0
-    },
-    email: {
-        type: String,
-        required :true
-    },
-    password: {
-        type: String,
-        required:true
-    }    
+    }
+    // ,
+    // email: {
+    //     type: String,
+    //     required :true
+    // },
+    // password: {
+    //     type: String,
+    //     required:true
+    // }    
 },
 {
 timestamps: true,
@@ -60,3 +61,5 @@ module.exports = mongoose.model('producto',productModel);
     "password":"clave123"
 }
     */
+
+

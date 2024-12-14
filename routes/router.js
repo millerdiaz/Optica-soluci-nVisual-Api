@@ -8,7 +8,7 @@ const middlewareJwt  = require('../middleware/jwt');
 //***********rutas para manejar los productos***********
 router.get('/showProduct',productController.allProducts);
 router.get('/showOne/:id',productController.getOneProduct);
-router.post('/addProduct',middlewareJwt.verificacionToken, productController.add);
+router.post('/addProduct', productController.add); // verificar middleware para agregar en angular = middlewareJwt.verificacionToken,
 router.put('/upDate/:id',productController.modify);
 router.delete('/delete/:id',productController.deleteProduct);
 
@@ -16,6 +16,7 @@ router.delete('/delete/:id',productController.deleteProduct);
 router.post('/loginUser',loginProductController.login)
 
 module.exports = router;
+
 
 
 

@@ -6,7 +6,7 @@ const conectDb = async () => {
         await mongoose.connect(mongoUrl)
         console.log("Se ha conectado con la base de datos exitosamente");
         
-    } catch (error) {
+    } catch (error) { 
         console.log(error);
         console.log("No se ha logrado conectar con la base de datos"); 
     }

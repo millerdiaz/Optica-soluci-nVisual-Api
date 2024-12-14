@@ -76,7 +76,7 @@ exports.modify = async (req,res) => {
     if (id.length === 24) {
         let product = await productsModel.findById(id);
         if (product) {
-            const existingProduct = await productsModel.findOne({ marca: update.marca, _id: { $ne: id } });
+            const existingProduct = await productsModel.findOne({ modelo: update.modelo, _id: { $ne: id } });
             if (existingProduct) {
                 res.status(409).json({ error: "Ya existe un producto con ese nombre" });
             }
@@ -86,7 +86,7 @@ exports.modify = async (req,res) => {
                 res.status(200).json(updateProduct);
             }
         }
-    }
+    } 
 };
 // exports.login = async (req, res) => {
 //     try {
