@@ -3,9 +3,13 @@ const Citas = require("../Models/citas.models");
 exports.createCitas = async (req, res) => {
   try {
     const dataUser = req.body;
+    console.log(dataUser);
+    
     await Citas.create(dataUser);
     return res.json({ ok: true, msg: "Cita creada correctamente" });
   } catch (error) {
+    console.log(error);
+    
     res.send("Error al crear Cita");
   }
 };
