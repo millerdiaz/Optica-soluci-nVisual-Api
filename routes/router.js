@@ -8,7 +8,7 @@ router.get('/user/:id', usersControllers.getOneUser)
 router.post('/addUsers', usersControllers.addUsers)
 router.delete('/deleteUser/:id', usersControllers.deleteUser)
 router.put('/updateUser/:id', usersControllers.updateUser)
-router.post('inicioDeSesion', middlewareJWT.verificacionDeToken, usersControllers.inicioDeSesion)
+router.post('/inicioDeSesion', usersControllers.inicioDeSesion)
 
 // router.get('/users', middlewareJWT.verificacionDeToken , usersControllers.getUsers)
 module.exports =  router

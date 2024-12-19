@@ -103,18 +103,21 @@ exports.updateUser = async (req, res) => {
 exports.inicioDeSesion = async (req, res)=> {
     try {
         let data = req.body
-        let user = await userModel.FindOne({email: data.email})
+        let user = await userModel.findOne({email: data.email})
 
-        if (user) {(user.contrasena === data.contrasena); {
-            let payload = {
-                id: user._id,
-                roll: user.roll,
-                nombre: `${user.nombre} ${user.apellido}`
+        if (user) {
+            if (user.contrasena === data.contrasena) {
+                
+                let payload = {
+                        id: user._id,
+                        nombre: `${user.correo} ${user.contrasena}`
+                    }
+                    let SECRET_KEY_JWT = process.env.JWT_SECRET
+                    let token = jwt.sign(payload,SECRET_KEY_JWT, {expiresIn: '24h'})
+                    res.status(200).json({token:token,roll:user.roll})
+            } else {
+                res.status(400).send({error:"Credenciales invalidas (clave)"})
             }
-            let SECRET_KEY_JWT = process.env.SECRET_KEY_JWT
-            let token = jwt.sign(payload, SECRET_KEY_JWT, {expiresIn: '24h'})
-            res.status(200).send(token)
-        }
 
         } else {
             res.status(400).send({error:"Credenciales invalidas (correo)"})
