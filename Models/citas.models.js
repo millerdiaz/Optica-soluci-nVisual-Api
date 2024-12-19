@@ -52,6 +52,12 @@ const CitasSchema = new mongoose.Schema({
         required: true,
         enum: ['Examen de vista','Consulta oftalmológica', 'Citugía láser']
     },
+
+    especialista:{
+        type: String,
+        required: true,
+        enum: ['Lalo Landa', 'Monica Martinez', 'Claudia Patricia Ramirez']
+    },
   
     fecha: {
         type: String,
