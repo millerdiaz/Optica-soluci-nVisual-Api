@@ -23,7 +23,7 @@ router.post('/addUsers', usersControllers.addUsers)
 router.delete('/deleteUser/:id', usersControllers.deleteUser)
 router.put('/updateUser/:id', usersControllers.updateUser)
 
-//***********rutas para manejar los usuarios***********
+//***********rutas para manejar las citas***********
 router.post("/crear",citasController. createCitas);
 router.get("/buscar",citasController.getCitas);
 router.get("/buscarCita/:id", citasController.getOne);

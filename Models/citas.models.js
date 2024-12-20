@@ -32,31 +32,72 @@ const mongoose = require("mongoose")
 // });
 
 const CitasSchema = new mongoose.Schema({
-    departamento: {
-        type: String,
-        required: true,
-        enum: ['Cundinamarca','Antioquia', 'Valle del Cauca']
-    },
+   
     ciudad: {
         type: String,
         required: true,
-        enum: ['Bogotá','Medellín', 'Calí']
+        enum: ['Bogotá','Medellín', 'Cali']
     },
     tienda: {
         type: String,
         required: true,
-        enum: ['Chapinero','CC Titan Plaza', 'CC el retiro']
+        enum: [// Bogotá
+            'Chapinero',
+            'CC Titan Plaza',
+            'CC el retiro',
+            'CC Gran Estación',
+            
+            // Medellín
+            
+            'CC Oviedo',
+            'CC El Tesoro',
+            'CC Viva Envigado',
+           
+            
+            // Cali
+            
+            'Palmetto Plaza',
+            'Unicentro',
+            'CC Jardín Plaza',]
     },
+
+    // ciudadesYTiendas: { 
+    //     type: String, 
+    //     required: true,
+        
+    //     enum: {Bogotá: ['Chapinero', 'CC Titan Plaza', 'CC el retiro', 'CC Gran Estación'],
+    //     Medellín: ['CC Oviedo', 'CC El Tesoro', 'CC Viva Envigado'],
+    //     Cali: ['Palmetto Plaza','Unicentro', 'CC Jardín Plaza']
+    //   }
+    // },
+
     tipoDeCita: {
         type: String,
         required: true,
-        enum: ['Examen de vista','Consulta oftalmológica', 'Citugía láser']
+        enum: ['Examen de vista','Consulta oftalmológica', 'Cirugía láser']
     },
 
     especialista:{
         type: String,
         required: true,
-        enum: ['Lalo Landa', 'Monica Martinez', 'Claudia Patricia Ramirez']
+        enum: [ 
+            // Bogotá
+            'Alberto Martínez',
+            'Laura Gómez',
+            'Juan Pérez',
+            'Sofía Rodríguez',
+            
+            // Medellín
+            'Carlos López',
+            'Ana Morales',
+            'Pedro Ramírez',
+            
+            // Cali
+            'María Fernández',
+            'José Torres',
+            'Lucía Castro',
+        ]
+        
     },
   
     fecha: {
